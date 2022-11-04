@@ -1,0 +1,36 @@
+USE bdLojaRoupas
+
+SELECT * FROM tbCliente
+SELECT * FROM tbProduto
+SELECT * FROM tbFabricante
+
+--Corrigir nome do Fabricante 
+UPDATE tbFabricante
+SET nomeFabricante = 'Turma da Malha'
+WHERE idFabricante = 3
+-- <, >, <=, >=, =, !=, <>
+
+--Descontar 10% no total da venda do cliente 1
+UPDATE tbVenda
+SET totalVenda = totalVenda / 1.10
+
+WHERE idVenda = 1
+--Aumentar 20% no preço do fabricante 2
+UPDATE tbProduto
+SET  precoProduto= precoProduto * 1.20
+WHERE idProduto = 2
+--Tirar 10 produtos do estoque
+UPDATE tbProduto
+SET estoqueProduto = estoqueProduto-10
+WHERE idProduto = 3
+
+--Deletar idvenda 2 e 3 
+DELETE FROM tbItensVenda
+WHERE idVenda = 2
+
+Delete FROM tbItensVenda
+WHERE idVenda = 3
+--Deletar o fabricante de codigo 1
+DELETE tbFabricante
+WHERE idFabricante = 1
+--Não conseguimos porque se for retirado o id 1, ele será conflitado em relação as outras tabelas que o incluem.
